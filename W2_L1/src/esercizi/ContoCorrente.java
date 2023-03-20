@@ -3,7 +3,7 @@ package esercizi;
 public class ContoCorrente {
 	String titolare;
 	int nMovimenti;
-	final int maxMovimenti = 50;
+	final int maxMovimenti = 20;
 	double saldo;
 
 	ContoCorrente(String titolare, double saldo) {
@@ -12,11 +12,18 @@ public class ContoCorrente {
 		nMovimenti = 0;
 	}
 
-	void preleva(double x) {
-		if (nMovimenti < maxMovimenti)
+	void preleva(double x) throws BancaException {
+
+		if (nMovimenti < maxMovimenti) {
 			saldo = saldo - x;
-		else
+		}
+		else {
 			saldo = saldo - x - 0.50;
+		}
+
+		if (saldo < 0) {
+			throw new BancaException("il conto e' in rosso");
+		}
 		nMovimenti++;
 	}
 
