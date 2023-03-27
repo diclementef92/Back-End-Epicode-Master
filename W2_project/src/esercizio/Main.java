@@ -14,7 +14,9 @@ public class Main {
 		miaBiblioteca.aggiungiElemento(rivista1);
 		miaBiblioteca.aggiungiElemento(rivista2);
 		miaBiblioteca.aggiungiElemento(libro1);
+		miaBiblioteca.aggiungiElemento(libro1);
 		miaBiblioteca.aggiungiElemento(libro2);
+		miaBiblioteca.rimuoviElementoPerIsbn(70000014L);
 
 		miaBiblioteca.getCatalogo().forEach(System.out::println);
 

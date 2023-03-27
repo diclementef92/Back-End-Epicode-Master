@@ -1,5 +1,8 @@
 package esercizio;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -14,8 +17,11 @@ public class Biblioteca {
 
 	}
 
-	public List<ElementoBiblioteca> carcaPerIsbn(Long isbn) {
+	public List<ElementoBiblioteca> ricercaPerIsbn(Long isbn) {
 		return catalogo.stream().filter(e -> e.getISBN() == isbn).collect(Collectors.toList());
+	}
+	public List<ElementoBiblioteca> ricercaPerTitolo(String titolo) {
+		return catalogo.stream().filter(e -> e.getTitolo() == titolo).collect(Collectors.toList());
 	}
 
 	public List<ElementoBiblioteca> ricercaPerAnno(Integer anno) {
@@ -27,7 +33,32 @@ public class Biblioteca {
 			catalogo.add(elem);
 	}
 
+	public void rimuoviElementoPerIsbn(Long isbn) {
+		catalogo = catalogo.stream().filter(e -> e.getISBN() != isbn).collect(Collectors.toList());
+	}
+
 	public List<Libro> getLibri() {
 		return catalogo.stream().filter(e -> e instanceof Libro).map(x -> (Libro) x).collect(Collectors.toList());
 	}
+
+	public List<Libro> ricercaPerAutore(String autore) {
+		return getLibri().stream().filter(e -> e.getAutore().contains(autore)).collect(Collectors.toList());
+	}
+
+	public void salvaSuFile(String nomefile) {
+		File f = new File(nomefile);
+		FileWriter fw;
+		try {
+			fw = new FileWriter(f);
+			fw.write(this.toString());
+			fw.close();
+		} catch (IOException e) {
+
+			e.printStackTrace();
+		}
+
+
+
+	}
+
 }
