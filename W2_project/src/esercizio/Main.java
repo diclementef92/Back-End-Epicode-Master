@@ -20,6 +20,10 @@ public class Main {
 
 		miaBiblioteca.getCatalogo().forEach(System.out::println);
 
+		miaBiblioteca.salvaSuFile("backup_catalogo.txt");
+
+		System.out.println("\nlettura da file ");
+		System.out.println(miaBiblioteca.leggiDafile("backup_catalogo.txt"));
 
 	}
 

@@ -1,0 +1,23 @@
+
+-Rivista-
+Focus
+anno: 2007
+num pagine: 24
+MENSILE
+-Rivista-
+Focus
+anno: 2006
+num pagine: 26
+MENSILE
+-Libro-
+ritratto di dorian gray
+anno: 1890
+num pagine: 55
+Genere fantascienza
+Autore Oscar Wild
+-Libro-
+La fondazione
+anno: 1980
+num pagine: 55
+Genere fantascienza
+Autore Asimov
