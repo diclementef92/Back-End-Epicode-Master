@@ -11,3 +11,4 @@ tmp/
 local.properties
 .loadpath
 .factorypath
+W3_L2/lib/postgresql-42.6.0.jar

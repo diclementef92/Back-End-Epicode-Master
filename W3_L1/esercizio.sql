@@ -27,12 +27,11 @@ CREATE TABLE IF NOT EXISTS fatture (
 	tipologia varchar(20),
 	importo double precision,
 	iva character varying(3) DEFAULT '20%',
-	data_nascita DATE,
-	regione_residenza varchar(20),
+	data_fattura DATE,
 	id_cliente int8 NOT NULL,
-	id_fornitore int8 NOT NULL,
+	numero_fornitore int8 NOT NULL,
 	CONSTRAINT fatture_cliente_fk FOREIGN KEY (id_cliente) REFERENCES clienti (numero_cliente),
-	CONSTRAINT fatture_fornitori_fk FOREIGN KEY (id_fornitore) REFERENCES fornitori (numero_fornitore)
+	CONSTRAINT fatture_fornitori_fk FOREIGN KEY (numero_fornitore) REFERENCES fornitori (numero_fornitore)
  );
 
 CREATE TABLE IF NOT EXISTS prodotti(
