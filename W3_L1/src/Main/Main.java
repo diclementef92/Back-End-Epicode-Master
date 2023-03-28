@@ -17,7 +17,7 @@ public class Main {
 			System.out.println("miglior studente:\n" + conn.getBest().toString());
 			Map<String, Object> map = new HashMap<String, Object>();
 			map.put("name", "Piero");
-			map.put("lastname", "del piero");
+			map.put("BIRTHDATE", "1995-12-20");
 			conn.updateStudent(2, map);
 
 			System.out.println("-Studenti-");
