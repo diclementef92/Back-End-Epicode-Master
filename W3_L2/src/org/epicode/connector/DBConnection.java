@@ -24,7 +24,7 @@ public class DBConnection {
 		createTabUser();
 	}
 
-	public void createTabUser() throws SQLException {
+	private void createTabUser() throws SQLException {
 		String sql = "CREATE TABLE IF NOT EXISTS Users (" + "id_user SERIAL PRIMARY KEY, " + "nome VARCHAR NOT NULL, "
 				+ "cognome VARCHAR NOT NULL, " + "anni INT2 NOT NULL, " + "email VARCHAR NOT NULL UNIQUE)";
 
@@ -50,7 +50,6 @@ public class DBConnection {
 			String email =  rs.getString("email");
 			utente = new User(idUser, nome, cognome, anni, email);
 		}
-
 		return utente;
 	}
 
