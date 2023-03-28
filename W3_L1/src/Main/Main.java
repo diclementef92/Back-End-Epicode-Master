@@ -17,8 +17,15 @@ public class Main {
 			System.out.println("miglior studente:\n" + conn.getBest().toString());
 			Map<String, Object> map = new HashMap<String, Object>();
 			map.put("name", "Piero");
+			map.put("lastname", "del piero");
 			conn.updateStudent(2, map);
 
+			System.out.println("-Studenti-");
+			conn.getAllStudents().forEach(e -> System.out.println(e.toString()));
+
+			int min = 18, max = 25;
+			System.out.println("Studenti con voti nel range [" + min + "," + max + "]");
+			conn.getVoteRangeWithQuery(min, max).forEach(e -> System.out.println(e.toString()));
 
 		} catch (SQLException e) {
 			System.out.println("errore SQL:\n" + e.getMessage());
