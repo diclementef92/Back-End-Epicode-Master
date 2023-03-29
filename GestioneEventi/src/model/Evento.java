@@ -24,16 +24,16 @@ public class Evento implements Serializable {
 	@Column(nullable = false)
 	private String titolo;
 
-	@Column(nullable = false)
+	@Column(name = "data_evento", nullable = false)
 	private LocalDate dataEvento;
 
-	private String descrizione;
+	@Column(name = "max_partecipanti")
+	private Integer numMassimoPartecipanti;
 
 	@Enumerated(EnumType.STRING)
 	private TipoEvento tipo;
 
-	@Column(name = "max_partecipanti")
-	private Integer numMassimoPartecipanti;
+	private String descrizione;
 
 	public Evento() {
 
