@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 @Table(name = "libri")
 public class Libro extends ElementoCartaceo {
 
+
 	private String autore;
 
 	private String genere;

@@ -6,18 +6,23 @@ import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Entity
 @NoArgsConstructor
-//@Table(name = "elemento_cartaceo")
+@ToString
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-//@DiscriminatorColumn(name = "tipo", discriminatorType = DiscriminatorType.STRING)
+@OnDelete(action = OnDeleteAction.CASCADE)
 public abstract class ElementoCartaceo {
 
 	@Id
 	private Long isbn;
 
+	@Column(nullable = false)
 	private String titolo;
 
 	@Column(name = "anno_pubblicazione")
@@ -26,6 +31,18 @@ public abstract class ElementoCartaceo {
 	@Column(name = "num_pagine")
 	private Integer numPagine;
 
+	public ElementoCartaceo(Long isbn, String titolo, Integer annoPubblicazione, Integer numPagine) {
+		this.isbn = isbn;
+		this.titolo = titolo;
+		this.annoPubblicazione = annoPubblicazione;
+		this.numPagine = numPagine;
+	}
+
+	public ElementoCartaceo(String titolo, Integer annoPubblicazione, Integer numPagine) {
+		this.titolo = titolo;
+		this.annoPubblicazione = annoPubblicazione;
+		this.numPagine = numPagine;
+	}
 	public Long getIsbn() {
 		return isbn;
 	}
@@ -58,17 +75,5 @@ public abstract class ElementoCartaceo {
 		this.numPagine = numPagine;
 	}
 
-	public ElementoCartaceo(Long isbn, String titolo, Integer annoPubblicazione, Integer numPagine) {
-		this.isbn = isbn;
-		this.titolo = titolo;
-		this.annoPubblicazione = annoPubblicazione;
-		this.numPagine = numPagine;
-	}
-
-	public ElementoCartaceo(String titolo, Integer annoPubblicazione, Integer numPagine) {
-		this.titolo = titolo;
-		this.annoPubblicazione = annoPubblicazione;
-		this.numPagine = numPagine;
-	}
 
 }
