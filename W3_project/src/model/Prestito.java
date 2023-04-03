@@ -12,10 +12,12 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Entity
 @Table(name = "prestiti")
 @NoArgsConstructor
+@ToString
 public class Prestito {
 
 	@Id

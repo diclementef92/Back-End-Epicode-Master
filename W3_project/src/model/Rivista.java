@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 @Entity
 @Table(name = "riviste")
 @NoArgsConstructor
+
 public class Rivista extends ElementoCartaceo {
 
 	@Enumerated(EnumType.STRING)
@@ -33,4 +34,7 @@ public class Rivista extends ElementoCartaceo {
 		this.periodo = p;
 	}
 
+	public String toString() {
+		return super.toString() + ", periodo=" + periodo + "]";
+	}
 }

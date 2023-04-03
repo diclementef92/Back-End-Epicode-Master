@@ -43,4 +43,7 @@ public class Libro extends ElementoCartaceo {
 		this.autore = autore;
 	}
 
+	public String toString() {
+		return super.toString() + ", autore=" + autore + ", genere=" + genere + "]";
+	}
 }

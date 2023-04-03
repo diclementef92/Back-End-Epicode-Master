@@ -47,13 +47,14 @@ public class Main {
 
 //		ElementoCartaceo elem = ricercaByIsbn(1L);
 
-		List<Libro> libri = getLibri();
-		for (Libro l : libri) {
-			System.out.println(l);
-		}
+//		List<Libro> libri = getLibri();
+//		List<ElementoCartaceo> libri = cercaPerAnnoPubblicazione(1980);
+//		List<Libro> libri = cercaLibriPerAutore("asimov");
+		List<ElementoCartaceo> libri = cercaPerTitolo("cast");
 
-		List<Libro> libriDiAsimov = cercaLibriPerAutore("Asimov");
-		for (Libro l : libriDiAsimov) {
+//		List<ElementoCartaceo> libri = cercaPerTitolo("'a' or 1=1");
+
+		for (ElementoCartaceo l : libri) {
 			System.out.println(l);
 		}
 		// chiusura applicazione
@@ -129,7 +130,7 @@ public class Main {
 
 	private static List<Libro> getLibri() {
 		try {
-			Query query = em.createQuery("Select singleLibro From Libro singleLibro");
+			Query query = em.createQuery("Select l From Libro l");
 			List<Libro> tuttilibri = query.getResultList();
 			return tuttilibri;
 		} catch (Exception e) {
@@ -142,12 +143,43 @@ public class Main {
 	private static List<Libro> cercaLibriPerAutore(String autore) {
 		try {
 			Query query = em
-					.createQuery("Select singleLibro From Libro singleLibro where singleLibro.autore ="
-							+ autore);
-			List<Libro> res = query.getResultList();
-			return res;
+					.createQuery("Select l From Libro l where LOWER(l.autore)=:a");
+			query.setParameter("a", autore);
+
+			return query.getResultList();
+
 		} catch (Exception e) {
-			System.out.println("errore ricerca libri");
+			System.out.println("errore ricerca libri per autore");
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	private static List<ElementoCartaceo> cercaPerAnnoPubblicazione(Integer anno) {
+		try {
+			Query query = em
+					.createQuery(
+							"Select e From ElementoCartaceo e where e.annoPubblicazione=:a");
+			query.setParameter("a", anno);
+			return query.getResultList();
+
+		} catch (Exception e) {
+			System.out.println("errore ricerca libri per anno pubblicazione");
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	private static List<ElementoCartaceo> cercaPerTitolo(String titolo) {
+		try {
+			Query query = em.createQuery(
+					"Select e From ElementoCartaceo e where LOWER(e.titolo) like :t");
+			query.setParameter("t", "%" + titolo + "%");
+
+			return query.getResultList();
+
+		} catch (Exception e) {
+			System.out.println("errore ricerca libri per titolo");
 			e.printStackTrace();
 		}
 		return null;
