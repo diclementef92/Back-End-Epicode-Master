@@ -51,8 +51,10 @@ public class Main {
 //		List<ElementoCartaceo> libri = cercaPerAnnoPubblicazione(1980);
 //		List<Libro> libri = cercaLibriPerAutore("asimov");
 		List<ElementoCartaceo> libri = cercaPerTitolo("cast");
+		libri.get(0).setNumPagine(150);
 
 //		List<ElementoCartaceo> libri = cercaPerTitolo("'a' or 1=1");
+		libri = cercaPerTitolo("cast");
 
 		for (ElementoCartaceo l : libri) {
 			System.out.println(l);

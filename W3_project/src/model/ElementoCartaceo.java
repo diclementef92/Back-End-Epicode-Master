@@ -9,10 +9,7 @@ import javax.persistence.InheritanceType;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
-import lombok.NoArgsConstructor;
-
 @Entity
-@NoArgsConstructor
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 @OnDelete(action = OnDeleteAction.CASCADE)
 public abstract class ElementoCartaceo {
@@ -28,6 +25,10 @@ public abstract class ElementoCartaceo {
 
 	@Column(name = "num_pagine")
 	private Integer numPagine;
+
+	public ElementoCartaceo() {
+
+	}
 
 	public ElementoCartaceo(Long isbn, String titolo, Integer annoPubblicazione, Integer numPagine) {
 		this.isbn = isbn;
