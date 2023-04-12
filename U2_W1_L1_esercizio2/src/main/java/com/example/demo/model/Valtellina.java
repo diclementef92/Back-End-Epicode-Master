@@ -1,8 +1,8 @@
 package com.example.demo.model;
 
-public class Valtellina extends Pizza {
+public class Valtellina extends PizzaBase {
 	public Valtellina() {
-		this.productName = " Valtellina con " + Topping.bresaola + " e " + Topping.rucola;
+		this.productName = "pizza Valtellina con " + Topping.bresaola + " e " + Topping.rucola;
 	}
 	@Override
 	public double getPrice() {
