@@ -5,24 +5,25 @@ import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
 
-import com.progetto.gestioneprenotazioni.service.UtenteService;
+import com.progetto.gestioneprenotazioni.service.EdificioService;
 
 @Component
-public class UtenteRunner implements ApplicationRunner {
+public class EdificioRunner implements ApplicationRunner {
 
 	@Autowired
-	UtenteService utenteService;
+	EdificioService edificioService;
 	
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
-		System.out.println("UtenteRunner...");
+		System.out.println("EdificioRunner...");
 
-//		utenteService.createFakeUtente();
-//
+
+		edificioService.createFakeEdificio();
+
 //		try {
-//		System.out.println(utenteService.findUtenteByUsername("Miriana Gallo"));
+//			edificioService.findEdificioByName("").forEach(e -> System.out.println(e));
 //		} catch (NoSuchElementException e) {
-//			System.out.println("utente non trovato");
+//			System.out.println("edificio non trovato");
 //		}
 
 	}

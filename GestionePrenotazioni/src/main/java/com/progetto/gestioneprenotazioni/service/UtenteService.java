@@ -1,6 +1,7 @@
 package com.progetto.gestioneprenotazioni.service;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +24,7 @@ public class UtenteService {
 
 
 	// trova utente dato uno username
-	public Utente findUtenteByUsername(String username) {
+	public Utente findUtenteByUsername(String username) throws NoSuchElementException {
 		return repo.findById(username).get();
 	}
 
@@ -35,13 +36,14 @@ public class UtenteService {
 		repo.save(u);
 	}
 
+	public void removeUtente(Utente u) {
+		repo.delete(u);
+	}
+
 	public List<Utente> getUtenti() {
 		return (List<Utente>) repo.findAll();
 	}
 
-	public void removeUtente(Utente u) {
-		repo.delete(u);
-	}
 
 	public void createFakeUtente() {
 		insertUtente(fakeUserProvider.getObject());
