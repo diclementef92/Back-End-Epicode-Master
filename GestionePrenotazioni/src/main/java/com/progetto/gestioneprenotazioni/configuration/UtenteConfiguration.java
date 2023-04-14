@@ -24,7 +24,8 @@ public class UtenteConfiguration {
 		Faker fake = Faker.instance(new Locale("it-IT"));
 		Utente u = new Utente();
 		u.setNomeCompleto(fake.name().fullName());
-		u.setEmail(fake.name().lastName() + "@mail.it");
+		u.setEmail(u.getNomeCompleto() + "@mail.it");
+		u.setUserName(u.getNomeCompleto() + fake.number().randomNumber());
 		return u;
 
 	}
