@@ -1,17 +1,18 @@
 package com.progetto.gestioneprenotazioni.model;
 
+import java.util.List;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "utenti")
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
 public class Utente {
 
@@ -21,10 +22,14 @@ public class Utente {
 	private String nomeCompleto;
 	private String email;
 
-//	public Utente(String userName, String nomeCompleto, String email) {
-//		this.userName = userName;
-//		this.nomeCompleto = nomeCompleto;
-//		this.email = email;
-//	}
+	@OneToMany
+	private List<Prenotazione> prenotazioni;
+
+	public Utente(String userName, String nomeCompleto, String email) {
+		super();
+		this.userName = userName;
+		this.nomeCompleto = nomeCompleto;
+		this.email = email;
+	}
 
 }

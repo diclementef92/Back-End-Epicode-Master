@@ -32,8 +32,9 @@ public class EdificioService {
 	}
 
 
-	public void insertEdificio(Edificio ed) {
+	public Long insertEdificio(Edificio ed) {
 		repo.save(ed);
+		return ed.getId();
 	}
 
 	public void updateEdificio(Edificio ed) {
@@ -48,7 +49,7 @@ public class EdificioService {
 		return (List<Edificio>) repo.findAll();
 	}
 
-	public void createFakeEdificio() {
-		insertEdificio(fakeEdificioProvider.getObject());
+	public Long createFakeEdificio() {
+		return insertEdificio(fakeEdificioProvider.getObject());
 	}
 }
