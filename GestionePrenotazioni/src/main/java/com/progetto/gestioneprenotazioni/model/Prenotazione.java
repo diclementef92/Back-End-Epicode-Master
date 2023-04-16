@@ -26,10 +26,11 @@ public class Prenotazione {
 	@Id
 	private LocalDate data;
 
-	@Id
+
 	@ManyToOne
 	private Utente utente;
 
+	@Id
 	@ManyToOne
 	private Postazione postazione;
 
