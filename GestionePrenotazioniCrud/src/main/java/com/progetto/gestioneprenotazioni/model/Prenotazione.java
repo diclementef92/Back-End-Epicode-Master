@@ -28,10 +28,12 @@ public class Prenotazione {
 
 
 	@ManyToOne
+//	@JoinColumn(name = "username", nullable = false)
 	private Utente utente;
 
 	@Id
 	@ManyToOne
+//	@JoinColumn(name = "postazione_id", nullable = false)
 	private Postazione postazione;
 
 

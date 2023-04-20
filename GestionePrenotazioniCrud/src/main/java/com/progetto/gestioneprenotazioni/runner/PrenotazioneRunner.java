@@ -25,8 +25,9 @@ public class PrenotazioneRunner implements ApplicationRunner {
 	public void run(ApplicationArguments args) throws Exception {
 		System.out.println("PrenotazioneRunner...");
 
+
 //		prenotazioneService.insertPrenotazione(new Prenotazione(LocalDate.now(), utenteService.getUtenti().get(0),
-//				postazioneService.getPostazioni().get(0)));
+//				postazioneService.getPostazioni().get(2)));
 
 //		prenotazioneService.updatePrenotazione(
 //				new Prenotazione(LocalDate.now(),

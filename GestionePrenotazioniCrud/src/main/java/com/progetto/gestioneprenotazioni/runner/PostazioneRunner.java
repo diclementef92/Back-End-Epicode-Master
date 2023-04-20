@@ -21,15 +21,17 @@ public class PostazioneRunner implements ApplicationRunner {
 	public void run(ApplicationArguments args) throws Exception {
 		System.out.println("PostazioneRunner...");
 
-//		if (edificioService.getEdifici().isEmpty()) {
-//			Long id = edificioService.createFakeEdificio();
-//			postazioneService.insertPostazione(
-//					new Postazione("test", TipoPostazione.PRIVATA, 1, edificioService.findEdificioById(id)));
-//		} else {
-//			Edificio ed = edificioService.getEdifici().get(0);
-//			postazioneService.insertPostazione(
-//					new Postazione("test", TipoPostazione.PRIVATA, 1, ed));
+//		for (int i = 0; i < 10; i++) {
 //
+//			if (edificioService.getEdifici().isEmpty()) {
+//				Long id = edificioService.createFakeEdificio();
+//				postazioneService.insertPostazione(
+//						new Postazione("test", TipoPostazione.PRIVATA, 1, edificioService.findEdificioById(id)));
+//			} else {
+//				Edificio ed = edificioService.getEdifici().get(0);
+//				postazioneService.insertPostazione(new Postazione("test", TipoPostazione.PRIVATA, 1, ed));
+//
+//			}
 //		}
 
 

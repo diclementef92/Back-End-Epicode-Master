@@ -17,7 +17,9 @@ public class UtenteRunner implements ApplicationRunner {
 	public void run(ApplicationArguments args) throws Exception {
 		System.out.println("UtenteRunner...");
 
-//		utenteService.createFakeUtente();
+//		for (int i = 0; i < 10; i++) {
+//			utenteService.createFakeUtente();
+//		}
 //
 //		try {
 //		System.out.println(utenteService.findUtenteByUsername("Miriana Gallo"));

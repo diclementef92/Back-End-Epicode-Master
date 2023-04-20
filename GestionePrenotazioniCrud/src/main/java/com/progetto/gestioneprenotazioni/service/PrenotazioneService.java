@@ -24,21 +24,29 @@ public class PrenotazioneService {
 		return true;
 	}
 
-	public void insertPrenotazione(Prenotazione p) throws Exception{
-		if (!isOccupied(p.getPostazione(), p.getData()))
-			repo.save(p);
+	// inserisce prenotazione solo se la postazione non è occupata in quella data e
+	// se l'utente non ha già altre prenotazioni in quella data
+	public Prenotazione insertPrenotazione(Prenotazione p) throws Exception {
 		// TODO: inserire solo se la data della prenotazione è al massimo 3 giorni prima
-		else{
+		if (!isOccupied(p.getPostazione(), p.getData())) {
+			if (repo.findByUtenteAndData(p.getUtente(), p.getData()).isEmpty())
+				return repo.save(p);
+			else
+				throw new Exception("l'utente ha già una prenotazione per questa data");
+		} else
 			throw new Exception("postazione già occupata per questa data");
-		}
+
 	}
 
-	public void updatePrenotazione(Prenotazione p) throws Exception {
-		if (!isOccupied(p.getPostazione(), p.getData()))
-			repo.save(p);
-		else {
+	public Prenotazione updatePrenotazione(Prenotazione p) throws Exception {
+		if (!isOccupied(p.getPostazione(), p.getData())) {
+			if (repo.findByUtenteAndData(p.getUtente(), p.getData()).isEmpty())
+				return repo.save(p);
+			else
+				throw new Exception("l'utente ha già una prenotazione per questa data");
+		} else
 			throw new Exception("postazione già occupata per questa data");
-		}
+
 	}
 
 	public void removePrenotazione(Prenotazione p) {

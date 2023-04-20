@@ -20,4 +20,6 @@ public interface PrenotazioneDAORepository extends CrudRepository<Prenotazione, 
 
 	public List<Prenotazione> findByPostazioneAndData(Postazione postazione, LocalDate data);
 
+	public List<Prenotazione> findByUtenteAndData(Utente utente, LocalDate data);
+
 }

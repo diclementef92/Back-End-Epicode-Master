@@ -17,9 +17,10 @@ public class EdificioRunner implements ApplicationRunner {
 	public void run(ApplicationArguments args) throws Exception {
 		System.out.println("EdificioRunner...");
 
-
-//		edificioService.createFakeEdificio();
-
+//		for (int i = 0; i < 10; i++) {
+//			edificioService.createFakeEdificio();
+//		}
+//
 //		try {
 //			edificioService.findEdificioByName("").forEach(e -> System.out.println(e));
 //		} catch (NoSuchElementException e) {
