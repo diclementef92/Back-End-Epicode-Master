@@ -1,52 +1,172 @@
 {
-  "info": {
-    "_postman_id": "9fee7b9c-9913-459e-8354-c3e0b4abcb2d",
-    "name": "gestionePrenotazioniInfo",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "_exporter_id": "13761257"
-  },
-  "item": [
-    {
-      "name": "info in english",
-      "request": {
-        "method": "GET",
-        "header": []
-      },
-      "response": []
-    },
-    {
-      "name": "info in italian",
-      "request": {
-        "method": "GET",
-        "header": []
-      },
-      "response": []
-    },
-    {
-      "name": "path not found",
-      "request": {
-        "method": "GET",
-        "header": [],
-        "url": {
-          "raw": "localhost:8080/info/em",
-          "host": ["localhost"],
-          "port": "8080",
-          "path": ["info"]
-        }
-      },
-      "response": [
-        {
-          "name": "path not found",
-          "originalRequest": {
-            "method": "GET",
-            "header": []
-          },
-          "_postman_previewlanguage": null,
-          "header": null,
-          "cookie": [],
-          "body": null
-        }
-      ]
-    }
-  ]
+	"info": {
+		"_postman_id": "9fee7b9c-9913-459e-8354-c3e0b4abcb2d",
+		"name": "gestionePrenotazioni",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "13761257"
+	},
+	"item": [
+		{
+			"name": "info",
+			"item": [
+				{
+					"name": "path not found",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/info",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"info"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "info in english",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "info in italian",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "utenti",
+			"item": [
+				{
+					"name": "getUtenti",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/utenti",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"utenti"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getUtenteByUsername",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/utenti/{username}",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"utenti",
+								"{username}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "prenotazioni",
+			"item": [
+				{
+					"name": "getAllPrenotazioni",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/prenotazioni",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"prenotazioni"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "postPrenotazione",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"data\": \"2023-04-10\",\r\n        \"utente\": {\r\n            \"userName\": \"Nazzareno Martinelli48\"\r\n        },\r\n        \"postazione\": {\r\n            \"id\": 3\r\n        }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/prenotazioni",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"prenotazioni"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getPrenotazioniByUtente",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/prenotazioni/Vania Gallo12727554",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"prenotazioni",
+								"Vania Gallo12727554"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
 }
