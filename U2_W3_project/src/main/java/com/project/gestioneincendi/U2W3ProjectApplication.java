@@ -26,13 +26,14 @@ public class U2W3ProjectApplication {
 		centro.addSonda(s3);
 
 
-		System.out.println(centro.toString());
+//		System.out.println(centro.toString());
 
 		s1.setSmokeLevel(3);
 		s2.setSmokeLevel(4);
 		s3.setSmokeLevel(6);
+		s1.setSmokeLevel(2.8d);
 
-		System.out.println(centro.toString());
+//		System.out.println(centro.toString());
 	}
 
 }

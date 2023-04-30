@@ -5,6 +5,9 @@ import java.util.Map;
 import java.util.Observable;
 import java.util.Observer;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.project.gestioneincendi.observable.Sonda;
 
 import lombok.ToString;
@@ -13,8 +16,12 @@ import lombok.ToString;
 @ToString
 public class CentroControllo implements Observer {
 
+	private double smokelevelthreshold = 5;
+
 	// observables: oggetti sonda non ripetuti, la key è l'id della sonda
 	private Map<Long, Sonda> sonde = new HashMap<>();
+
+	private static Logger logger = LoggerFactory.getLogger(CentroControllo.class);
 
 	@Override
 	public void update(Observable s, Object smokeLevel) {
@@ -23,10 +30,17 @@ public class CentroControllo implements Observer {
 
 			// aggiorna la sonda negli observables
 			sonde.put(sonda.getId(), sonda);
-//			System.out.println(smokeLevel);
-			if ((double) smokeLevel > 5d) {
-				System.out.println("smoke level maggiore di 5 dalla sonda " + sonda.toString());
+
+			if ((double) smokeLevel > smokelevelthreshold) {
+
+				logger.error(
+						"Allarme: livello fumo maggiore di " + smokelevelthreshold + " dalla sonda "
+								+ sonda.toString());
 			}
+			else {
+				logger.info("rilevazione fumo dalla " + sonda.toString());
+			}
+
 		}
 	}
 
@@ -37,8 +51,8 @@ public class CentroControllo implements Observer {
 			Sonda sonda = (Sonda) s;
 			this.sonde.put(sonda.getId(), sonda);
 
-			if (sonda.getSmokeLevel() > 5d) {
-				System.out.println("smoke level maggiore di 5 dalla sonda " + sonda.toString());
+			if (sonda.getSmokeLevel() > smokelevelthreshold) {
+				logger.error("smoke level maggiore di 5 dalla sonda " + sonda.toString());
 			}
 		}
 	}
