@@ -36,6 +36,9 @@ public class CentroControllo implements Observer {
 				logger.error(
 						"Allarme: livello fumo maggiore di " + smokelevelthreshold + " dalla sonda "
 								+ sonda.toString());
+				logger.error("http://host/alarm?=idsonda=" + sonda.getId() + "&lat="
+						+ sonda.getCoordinata().getLatitudine()
+						+ "&lon=" + sonda.getCoordinata().getLongitudine() + "&smokelevel=" + sonda.getSmokeLevel());
 			}
 			else {
 				logger.info("rilevazione fumo dalla " + sonda.toString());
@@ -52,7 +55,8 @@ public class CentroControllo implements Observer {
 			this.sonde.put(sonda.getId(), sonda);
 
 			if (sonda.getSmokeLevel() > smokelevelthreshold) {
-				logger.error("smoke level maggiore di 5 dalla sonda " + sonda.toString());
+				logger.error("Allarme: livello fumo maggiore di " + smokelevelthreshold + " dalla sonda "
+						+ sonda.toString());
 			}
 		}
 	}
