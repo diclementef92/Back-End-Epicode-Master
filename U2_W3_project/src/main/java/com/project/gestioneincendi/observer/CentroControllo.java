@@ -43,6 +43,7 @@ public class CentroControllo implements Observer {
 				logger.error("http://host/alarm?=idsonda=" + sonda.getId() + "&lat="
 						+ sonda.getCoordinata().getLatitudine()
 						+ "&lon=" + sonda.getCoordinata().getLongitudine() + "&smokelevel=" + sonda.getSmokeLevel());
+
 			}
 			else {
 				logger.info("rilevazione fumo dalla " + sonda.toString());
@@ -73,6 +74,13 @@ public class CentroControllo implements Observer {
 		}
 	}
 
+	public Map<Long, Sonda> getAllSonde() {
+		return sonde;
+	}
+
+	public Sonda getSondaById(Long id) {
+		return sonde.get(id);
+	}
 
 
 

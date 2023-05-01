@@ -43,14 +43,14 @@ public class Sonda extends Observable {
 	}
 
 
-	@Override
-	public String toString() {
-		return "Sonda [id=" + id + ", coordinata=" + coordinata + ", smokeLevel=" + smokeLevel + "]\n";
-	}
 
 	public Observer getCentroControllo() {
 		return centroControllo;
 	}
 
+	@Override
+	public String toString() {
+		return "Sonda [id=" + id + ", coordinata=" + coordinata + ", smokeLevel=" + smokeLevel + "]\n";
+	}
 
 }
