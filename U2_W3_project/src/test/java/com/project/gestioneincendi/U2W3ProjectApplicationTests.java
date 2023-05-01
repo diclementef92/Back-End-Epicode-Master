@@ -1,10 +1,12 @@
 package com.project.gestioneincendi;
 
+import static org.junit.Assert.assertEquals;
+
 import java.util.ArrayList;
 import java.util.List;
 
-import org.junit.After;
-import org.junit.Before;
+import org.junit.AfterClass;
+import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
@@ -19,35 +21,57 @@ import com.project.gestioneincendi.observer.CentroControllo;
 
 @SpringBootTest
 @RunWith(JUnit4.class)
+//NOTA: prima di eseguire verificare in run config che il test runner sia Junit 4
 public class U2W3ProjectApplicationTests {
 
-	private List<Sonda> sonde = new ArrayList<>();
-	private AnnotationConfigApplicationContext appContext = new AnnotationConfigApplicationContext(
+	private static List<Sonda> sonde = new ArrayList<>();
+	private static AnnotationConfigApplicationContext appContext = new AnnotationConfigApplicationContext(
 			SondaConfiguration.class);
 
-	private Logger logger = LoggerFactory.getLogger(CentroControllo.class);
+	private static Logger logger = LoggerFactory.getLogger(CentroControllo.class);
 
-	@Before
-	public void setupTest() {
-		logger.info("setup test");
+	@BeforeClass
+	public static void setupTest() {
+		logger.info("setup test: creo 10 sonde");
 
 		for (int i = 0; i < 10; i++) {
 			Sonda s = (Sonda) appContext.getBean("randomSonda");
 			sonde.add(s);
 		}
+		logger.info(sonde.toString());
+	}
 
+	// testa se il livello di fumo aumenta di 1
+	@Test
+	public void aumentaLivelloFumo() {
+		logger.info("aumentaLivelloFumo test");
+		double levelBefore = sonde.get(0).getSmokeLevel();
+
+		sonde.get(0).setSmokeLevel(levelBefore + 1);
+
+		assertEquals(levelBefore + 1, sonde.get(0).getSmokeLevel(), 0);
+	}
+
+	// testa se il livello di fumo diminuisce di 1
+	@Test
+	public void abbassaLivelloFumo() {
+		logger.info("abbassaLivelloFumo test");
+		double levelBefore = sonde.get(0).getSmokeLevel();
+		sonde.get(0).setSmokeLevel(levelBefore - 1);
+
+		assertEquals(levelBefore - 1, sonde.get(0).getSmokeLevel(), 0);
 	}
 
 	@Test
-	public void testprova() {
-		logger.info("prova test");
-		logger.info(sonde.toString());
+	public void getSonde() {
+		logger.info("getSonde test");
 
 	}
 
-	@After
-	public void afterProva() {
+	@AfterClass
+	public static void afterProva() {
 		logger.info("dopo test");
+		appContext.close();
 	}
 
 

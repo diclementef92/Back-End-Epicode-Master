@@ -13,15 +13,21 @@ public class SondaConfiguration {
 	static Long n = 0l;
 
 	@Bean
+	public CentroControllo getCentroControllo() {
+		return new CentroControllo();
+	}
+
+	@Bean
 	@Scope("prototype")
-	public Sonda newSonda(Long id, Coordinata coordinata, CentroControllo centroControllo) {
-		return new Sonda(id, coordinata, centroControllo);
+	public Sonda newSonda(Long id, Coordinata coordinata) {
+		return new Sonda(id, coordinata, getCentroControllo());
 	}
 
 	@Bean
 	@Scope("prototype")
 	public Sonda randomSonda() {
-		return new Sonda(n, randomCoordinata(), new CentroControllo());
+		n++;
+		return new Sonda(n, randomCoordinata(), getCentroControllo());
 	}
 
 	@Bean
