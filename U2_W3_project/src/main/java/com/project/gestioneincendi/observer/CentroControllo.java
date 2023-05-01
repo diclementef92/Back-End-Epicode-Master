@@ -7,6 +7,7 @@ import java.util.Observer;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.context.annotation.Configuration;
 
 import com.project.gestioneincendi.observable.Sonda;
 
@@ -14,8 +15,11 @@ import lombok.ToString;
 
 @SuppressWarnings("deprecation")
 @ToString
+@Configuration
+//@PropertySource("classpath:application.properties")
 public class CentroControllo implements Observer {
 
+//	@Value("${sonda.smokelevelth}")
 	private double smokelevelthreshold = 5;
 
 	// observables: oggetti sonda non ripetuti, la key è l'id della sonda
